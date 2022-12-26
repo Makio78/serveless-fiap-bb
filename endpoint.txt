@@ -1,0 +1,11 @@
+- GET /alunos
+
+- GET /alunos/ID
+
+- POST /alunos
+
+- PUT /alunos/ID
+
+- DELETE /alunos/ID
+
+FRONTEND -> API GATEWAY -> LAMBDAS

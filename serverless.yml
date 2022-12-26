@@ -1,0 +1,99 @@
+service: cadastro-alunos
+
+plugins:
+  # npm i serverless-dynamodb-local --save-dev && sls dynamodb install
+  - serverless-dynamodb-local
+  - serverless-offline
+
+custom:
+  dynamodb:
+  # If you only want to use DynamoDB Local in some stages, declare them here
+    stages:
+      - dev
+    start:
+      port: 8000
+      inMemory: true
+      heapInitial: 200m
+      heapMax: 1g
+      migrate: true
+      seed: true
+      convertEmptyValues: true
+    seed:
+      domain:
+        sources:
+          - table: ALUNOS
+            sources: [./offline/migrations/alunos-seed.json]
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+  # you can overwrite defaults here
+  stage: dev
+  region: us-east-1
+  environment:
+   ALUNOS_TABLE: 'ALUNOS-${opt:stage, self:provider.stage}'
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:PutItem
+        - dynamodb:DeleteItem
+        - dynamodb:GetItem
+        - dynamodb:UpdateItem
+      Resource: 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.ALUNOS_TABLE}'
+
+functions:
+  listarAlunos:
+    handler: handler.listarAlunos
+    events:
+      - http:
+          path: alunos
+          method: get
+
+  obterAluno:
+    handler: handler.obterAluno
+    events:
+      - http:
+          path: alunos/{alunoId}
+          method: get
+
+  cadastrarAluno:
+    handler: handler.cadastrarAluno
+    events:
+      - http:
+          path: alunos
+          method: post
+
+  atualizarAluno:
+    handler: handler.atualizarAluno
+    events:
+      - http:
+          path: alunos/{alunoId}
+          method: put
+          
+  excluirAluno:
+    handler: handler.excluirAluno
+    events:
+      - http:
+          path: alunos/{alunoId}
+          method: delete
+
+
+resources:
+  Resources:
+    AlunosTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.ALUNOS_TABLE}
+        AttributeDefinitions:
+          - AttributeName: aluno_id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: aluno_id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
