@@ -2,6 +2,7 @@ service: cadastro-alunos
 
 plugins:
   # npm i serverless-dynamodb-local --save-dev && sls dynamodb install
+  # serveless-offline para rodar local
   - serverless-dynamodb-local
   - serverless-offline
 
@@ -80,7 +81,6 @@ functions:
       - http:
           path: alunos/{alunoId}
           method: delete
-
 
 resources:
   Resources:

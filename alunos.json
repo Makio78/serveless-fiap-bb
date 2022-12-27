@@ -4,7 +4,7 @@
       "PutRequest": {
         "Item": {
           "data_nascimento": {
-            "S": "1984-01-01"
+            "S": "1984-12-28"
           },
           "email": {
             "S": "humberto@mail.com"
@@ -28,7 +28,7 @@
       "PutRequest": {
         "Item": {
           "data_nascimento": {
-            "S": "1975-01-01"
+            "S": "1975-09-11"
           },
           "email": {
             "S": "maria@mail.com"
@@ -52,7 +52,7 @@
       "PutRequest": {
         "Item": {
           "data_nascimento": {
-            "S": "1990-01-01"
+            "S": "1990-01-02"
           },
           "email": {
             "S": "carol@mail.com"

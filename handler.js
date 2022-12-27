@@ -8,6 +8,7 @@ const alunos = [
 const AWS = require("aws-sdk");
 const { v4: uuidv4 } = require("uuid");
 
+// Dynamodb local
 const dynamodbOfflineOptions = {
   region: "localhost",
   endpoint: "http://localhost:8000"
@@ -23,9 +24,8 @@ const params = {
   TableName: process.env.ALUNOS_TABLE,
 };
 
+//Listar Alunos com paginação
 module.exports.listarAlunos = async (event) => {
-    // MySQL
-  // SELECT * FROM table LIMIT 10 OFFSET 21
   // DynamoDB
   // Limit = LIMIT, ExclusiveStartKey = OFFSET e LastEvaluatedKey = "Numero da Pagina"
 
@@ -75,6 +75,7 @@ module.exports.listarAlunos = async (event) => {
   }
 };
 
+// Listar Aluno e Consultar aluno pelo Id
 module.exports.obterAluno = async (event) => {
   try {
     const { alunoId } = event.pathParameters;
@@ -112,7 +113,7 @@ module.exports.obterAluno = async (event) => {
     };
   }
 };
-
+// Cadastrar Aluno
 module.exports.cadastrarAluno = async (event) => {
   try {
     const timestamp = new Date().getTime();
@@ -153,7 +154,7 @@ module.exports.cadastrarAluno = async (event) => {
     };
   }
 };
-
+// Atualizar dados do Aluno
 module.exports.atualizarAluno = async (event) => {
   const { alunoId } = event.pathParameters
 
@@ -209,7 +210,7 @@ module.exports.atualizarAluno = async (event) => {
     };
   }
 };
-
+// Excluir Aluno
 module.exports.excluirAluno = async event => {
   const { alunoId } = event.pathParameters
 
@@ -236,7 +237,7 @@ module.exports.excluirAluno = async event => {
 
     if (error == 'ConditionalCheckFailedException') {
       error = 'Aluno não existe';
-      message = `Recurso com o ID ${alunoId} não existe e não pode ser atualizado`;
+      message = `Recurso com o ID ${alunoId} não existe e não pode ser excluído`;
       statusCode = 404;
     }
 
