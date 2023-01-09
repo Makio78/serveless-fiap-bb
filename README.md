@@ -26,26 +26,26 @@ Api de gestão de alunos.
 8. Comando para buscar os endpoits e rodar local: 
    - sls offline
 
-     > GET    | http://localhost:3000/dev/alunos                                        
-     > POST   | http://localhost:3000/2015-03-31/functions/listarAlunos/invocations     
-     > GET    | http://localhost:3000/dev/alunos/{alunoId}                              
-     > POST   | http://localhost:3000/2015-03-31/functions/obterAluno/invocations       
-     > POST   | http://localhost:3000/dev/alunos                                        
-     > POST   | http://localhost:3000/2015-03-31/functions/cadastrarAluno/invocations   
-     > PUT    | http://localhost:3000/dev/alunos/{alunoId}                              
-     > POST   | http://localhost:3000/2015-03-31/functions/atualizarAluno/invocations   
-     > DELETE | http://localhost:3000/dev/alunos/{alunoId}                              
-     > POST   | http://localhost:3000/2015-03-31/functions/excluirAluno/invocations
+     - GET    | http://localhost:3000/dev/alunos                                        
+     - POST   | http://localhost:3000/2015-03-31/functions/listarAlunos/invocations     
+     - GET    | http://localhost:3000/dev/alunos/{alunoId}                              
+     - POST   | http://localhost:3000/2015-03-31/functions/obterAluno/invocations       
+     - POST   | http://localhost:3000/dev/alunos                                        
+     - POST   | http://localhost:3000/2015-03-31/functions/cadastrarAluno/invocations   
+     - PUT    | http://localhost:3000/dev/alunos/{alunoId}                              
+     - POST   | http://localhost:3000/2015-03-31/functions/atualizarAluno/invocations   
+     - DELETE | http://localhost:3000/dev/alunos/{alunoId}                              
+     - POST   | http://localhost:3000/2015-03-31/functions/excluirAluno/invocations
 
 
 9. Comando para buscar os edpoints em desenv: 
    - sls info
 
-     > GET    | https://9y7mdm2ymj.execute-api.us-east-1.amazonaws.com/dev/alunos
-     > GET    | https://9y7mdm2ymj.execute-api.us-east-1.amazonaws.com/dev/alunos/{alunoId}
-     > POST   | https://9y7mdm2ymj.execute-api.us-east-1.amazonaws.com/dev/alunos
-     > PUT    | https://9y7mdm2ymj.execute-api.us-east-1.amazonaws.com/dev/alunos/{alunoId}
-     > DELETE | https://9y7mdm2ymj.execute-api.us-east-1.amazonaws.com/dev/alunos/{alunoId}
+      - GET    | https://9y7mdm2ymj.execute-api.us-east-1.amazonaws.com/dev/alunos
+      - GET    | https://9y7mdm2ymj.execute-api.us-east-1.amazonaws.com/dev/alunos/{alunoId}
+      - POST   | https://9y7mdm2ymj.execute-api.us-east-1.amazonaws.com/dev/alunos
+      - PUT    | https://9y7mdm2ymj.execute-api.us-east-1.amazonaws.com/dev/alunos/{alunoId}
+      - DELETE | https://9y7mdm2ymj.execute-api.us-east-1.amazonaws.com/dev/alunos/{alunoId}
 
 
 10. Comando para rodar Local: 
