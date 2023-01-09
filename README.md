@@ -51,14 +51,14 @@ Api de gestão de alunos.
 10. Comando para rodar Local: 
     - sls offline
 11. Instalção plugins do Dynamodb:
-   - npm i serverless-dynamodb-local --save-dev && sls dynamodb install
-   - npm i aws-sdk
+    - npm i serverless-dynamodb-local --save-dev && sls dynamodb install
+    - npm i aws-sdk
 12. Tabelas - DynamoDB 
-   - Nome da Tabela: alunos
+    - Nome da Tabela: alunos
 13. Popular a tabela:
-   - aws dynamodb batch-write-item --request-items file://alunos.json
+    - aws dynamodb batch-write-item --request-items file://alunos.json
 14. Biblioteca para geração de Ids 
-   - npm i uuid
+    - npm i uuid
 
 
 ## 👨🏽‍💻👩🏽‍💻 Desenvolvedores 
